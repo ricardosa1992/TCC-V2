@@ -1,0 +1,4 @@
+Modificar a lógica de inserção do pedido na prateleira:
+	Não precisa verificar a prateileira mais vazia, somente percorrer a lista de pedidos e inserindo em cada prateleira
+
+Verificar se o Pedido cabe na prateleira
