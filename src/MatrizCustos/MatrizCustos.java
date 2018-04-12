@@ -1,3 +1,5 @@
+package MatrizCustos;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -27,7 +29,7 @@ public class MatrizCustos {
 		    	int coordY = Integer.parseInt(linhaNumeros[2]);
 		    	mapPontos.put(ponto, new Ponto(ponto,coordX,coordY));
 		    	qtdlinhas++; 
-		        linha = lerArq.readLine(); // lê da segunda até a última linha
+		        linha = lerArq.readLine(); // lï¿½ da segunda atï¿½ a ï¿½ltima linha
 		      }
 		 
 		      arq.close();

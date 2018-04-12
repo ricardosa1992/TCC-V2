@@ -14,6 +14,8 @@ public class Main {
         //MatrizHilbert mat = new MatrizHilbert(3);
         //mat.printMapHilbertCurve();
         
-        ManipulacaoMatrizHilbert.getOrdemAtendimentoClientes(null);
+        //ManipulacaoMatrizHilbert.getOrdemAtendimentoClientes(null);
+        ManipulacaoMatrizHilbert m = new ManipulacaoMatrizHilbert();
+        m.getOrdemAtendimentoClientes();
     }
 }

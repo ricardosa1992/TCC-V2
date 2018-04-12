@@ -1,3 +1,5 @@
+package MatrizCustos;
+
 
 public class Ponto {
 	int valor;
