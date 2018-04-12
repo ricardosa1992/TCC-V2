@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,8 +26,22 @@ public class ManipulacaoMatrizHilbert {
     SmallHilbertCurve matrizHilbert;
     int qtdlinhas = 0;
     HashMap<Integer,Ponto> mapPontos = new HashMap<>();
-    HashMap<Integer,Long> mapOrdemAtendimento = new HashMap<>();
-
+    HashMap<Long,Integer> mapOrdemAtendimento = new HashMap<>();
+     private static final HashMap<Integer, Integer> mapOrdemMatrizHilbert;
+    static
+    {
+        mapOrdemMatrizHilbert = new HashMap<Integer, Integer>();
+        mapOrdemMatrizHilbert.put(8, 3);
+        mapOrdemMatrizHilbert.put(16, 4);
+        mapOrdemMatrizHilbert.put(32, 5);
+        mapOrdemMatrizHilbert.put(64, 6);
+        mapOrdemMatrizHilbert.put(128, 7);
+        mapOrdemMatrizHilbert.put(256, 8);
+        mapOrdemMatrizHilbert.put(512, 9);
+        mapOrdemMatrizHilbert.put(1024, 10);
+    }
+    
+    
     public ManipulacaoMatrizHilbert() {
     }
     
@@ -41,21 +56,60 @@ public class ManipulacaoMatrizHilbert {
         int maiorPosY = ObterMaiorPosY();
         
         int dimensaoMatriz = (maiorPosX > maiorPosY) ? maiorPosX : maiorPosY;
-        matrizHilbert = HilbertCurve.small().bits(dimensaoMatriz).dimensions(2);
+        int menorOrdem = ObterOrdemMatriz(dimensaoMatriz);
+        System.out.println("DimMatriz: " + dimensaoMatriz);
+        System.out.println("MenorOrdem: " + menorOrdem);
+        matrizHilbert = HilbertCurve.small().bits(menorOrdem).dimensions(2);
         
         for(Ponto ponto: mapPontos.values()){
             int linha = ponto.getPosY();
             int coluna = ponto.getPosX();
             long index = matrizHilbert.index(linha, coluna);
-            mapOrdemAtendimento.put(ponto.getValor(), index);
-            System.out.println("Ponto: " + ponto.getValor() + " Ordem: " + index);
+            mapOrdemAtendimento.put(index, ponto.getValor());
+            //System.out.println("Ponto: " + ponto.getValor() + " Ordem: " + index);
+        }
+       
+        //Ordenando o array de ordem de atendimento
+        Long[] array = new Long[mapOrdemAtendimento.values().size()];
+        int i = 0;
+        for(Long index: mapOrdemAtendimento.keySet()){
+            array[i] = index;
+            i++;
+        }
+        Arrays.sort(array);
+        
+        for(Long index: array){
+            System.out.print(mapOrdemAtendimento.get(index) + " ");
+            listaOrdemAtendimento.add(mapOrdemAtendimento.get(index));
         }
         
-        return null;
+        return listaOrdemAtendimento;
+    }
+    
+    public int ObterOrdemMatriz(int dimensao){
+        int[] listDimensao = new int[mapOrdemMatrizHilbert.values().size()];
+        int i = 0;
+        for(int dim: mapOrdemMatrizHilbert.keySet()){
+            listDimensao[i] = dim;
+            i++;
+        }
+        Arrays.sort(listDimensao);
+        
+        //Obetendo a menor ordem possível para a dimensão da matriz
+        int menorOrdem = 3;
+        for(Integer dim: listDimensao){
+            if(dim >= dimensao){
+                menorOrdem = mapOrdemMatrizHilbert.get(dim);
+                break;
+            }
+        }
+        
+        return menorOrdem;
     }
     
     public void ReposicionarPontos(){
-        lerPontos("C:\\Users\\PATRÍCIA E RICARDO\\Documents\\NetBeansProjects\\TCC-Netbeans\\entrada2.txt");
+        //lerPontos("C:\\Users\\PATRÍCIA E RICARDO\\Documents\\NetBeansProjects\\TCC-Netbeans\\entrada2.txt");
+        lerPontos("C:\\Users\\ricar\\OneDrive\\Documentos\\NetBeansProjects\\TCC-V2\\entrada.txt");
         int maiorPosX = ObterMaiorPosX();
         int maiorPosY = ObterMaiorPosY();
         int menorPosX = 0;
