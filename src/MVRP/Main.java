@@ -3,23 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package VRP;
+package MVRP;
 
 /**
  *
- * @author PATRÍCIA E RICARDO
+ * @author ricar
  */
 public class Main {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        //VNS vns = new VNS();
-        //vns.vns(47);
-        
-        MatrizCustos m = new MatrizCustos(32);
-        m.printMatrizCustos();
-    }
-    
+            mTSP m = new mTSP(6);
+            //m.vns(9);
+	}
 }

@@ -17,13 +17,13 @@ import java.util.Random;
  * @author PATRÍCIA E RICARDO
  */
 public class MatrizCustos {
-    private int [][] matrizCustos; 
+   private float [][] matrizCustos; 
 	private int N;
 	public MatrizCustos(int n) {
 		N = n;
-		matrizCustos = new int[N][N];
+		matrizCustos = new float[N][N];
 		//gerarMatrizCustos(400);
-		lerMatrizTeste("C:\\Users\\PATRÍCIA E RICARDO\\Documents\\NetBeansProjects\\TCC\\M-" + n + ".csv");
+		lerMatrizTeste("C:\\Users\\RICARDO\\eclipse-workspace\\TCC\\M-" + n + ".csv");
 	}
 	
 	public void gerarMatrizCustos(int tam){
@@ -71,19 +71,18 @@ public class MatrizCustos {
 		}
 	}
 	
-	public int[][] getMatriz(){
+	public float[][] getMatriz(){
 		return this.matrizCustos;
 	}
 	
-	public int getElemPosIJ(int i, int j){
+	public float getElemPosIJ(int i, int j){
 		return matrizCustos[i][j];
 	}
 	
 	public void insereLinhaMatriz(int linha, String[] listaNumeros){
 		int coluna = 0;
 		for (String num : listaNumeros) {
-			
-			matrizCustos[linha][coluna] = Integer.parseInt(num);
+			matrizCustos[linha][coluna] = Float.parseFloat(num.replace(",", "."));
 			coluna++;
 		}
 	}
