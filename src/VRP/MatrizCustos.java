@@ -23,8 +23,9 @@ public class MatrizCustos {
 		N = n;
 		matrizCustos = new float[N][N];
 		//gerarMatrizCustos(400);
-		lerMatrizTeste("C:\\Users\\RICARDO\\eclipse-workspace\\TCC\\M-" + n + ".csv");
-	}
+		lerMatrizTeste("C:\\Users\\ricar\\OneDrive\\Documentos\\NetBeansProjects\\TCC-V2\\M-" + n + ".csv");
+                printMatrizCustos();
+        }
 	
 	public void gerarMatrizCustos(int tam){
 		Random gerador = new Random();
@@ -82,8 +83,8 @@ public class MatrizCustos {
 	public void insereLinhaMatriz(int linha, String[] listaNumeros){
 		int coluna = 0;
 		for (String num : listaNumeros) {
-			matrizCustos[linha][coluna] = Float.parseFloat(num.replace(",", "."));
-			coluna++;
+                    matrizCustos[linha][coluna] = Float.parseFloat(num.replace(",", "."));
+                    coluna++;
 		}
 	}
 	

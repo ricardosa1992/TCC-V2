@@ -9,7 +9,7 @@ public class Main {
 		matriz.calcularMatrizDistancia();
 		//matriz.printMatriz();
 		//matriz.printPosIguais();
-		matriz.gravarMatriz("matriz.csv");
+		matriz.gravarMatriz("m-33.csv");
 
 	}
 

@@ -34,11 +34,12 @@ public class mTSP {
 		int[] solucao5 = new int[] {0,37,48,4,24,12,17};
 		*/
 		
-		int[] solucao1 = new int[] {0,16,9,26,32,44,14,43,10,46,50,38};
-		int[] solucao2 = new int[] {0,27,6,13,23,42,25,5,22,7,30,47};
-		int[] solucao3 = new int[] {0,3,41,39,18,11,36,40,45};
-		int[] solucao4 = new int[] {0,33,21,15,49,8,2,34,20,28,19,31,35,29,1};
-		int[] solucao5 = new int[] {0,12,48,4,24,17,37};
+		int[] solucao1 = new int[] {0,5,2,20,15,9,3,8,4};
+		int[] solucao2 = new int[] {0,31,24,23,26,22};
+		int[] solucao3 = new int[] {0,17,11,29,19,7};
+		int[] solucao4 = new int[] {0,10,12,1};
+		int[] solucao5 = new int[] {0,28,27,30,16,25,32};
+                int[] solucao6 = new int[] {0,13,6,18,1,14};
 		
 		solucaoTotal = new Vector<int[]>();
 		solucaoTotal.add(solucao1);
@@ -46,6 +47,7 @@ public class mTSP {
 		solucaoTotal.add(solucao3);
 		solucaoTotal.add(solucao4);
 		solucaoTotal.add(solucao5);
+                solucaoTotal.add(solucao6);
 	}
 	
 	public void gerarSolucaoInicial() {
